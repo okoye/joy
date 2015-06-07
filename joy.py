@@ -1,9 +1,9 @@
 '''
-An implementation of the Joy time-machine.
+An implementation of a Zoe time-machine.
 
-@description:   Allows you to get/send messages from/to the future today. 
+@description:   Allows you to get/send messages from/to the future today.
                 To successfully unscramble messages. You will need to deduce the passphrase.
-                Herein lies the challenge. 
+                Herein lies the challenge.
 
 @author:        Chuka
 '''
@@ -32,7 +32,7 @@ def unscramble(cipher, passphrase):
   cipher = b64decode(cipher)
   des = DES.new(passphrase, DES.MODE_ECB)
   message = des.decrypt(cipher)
-  message = message.strip('X')#remove pesky padding also 
+  message = message.strip('X')#remove pesky padding also
   return message
 
 def test_passphrase(passphrase):
@@ -46,7 +46,7 @@ def test_passphrase(passphrase):
 
 def start():
   while True:
-    passphrase = environ.get('JOY_PASSPHRASE', None)
+    passphrase = environ.get('ZOE_PASSPHRASE', None)
     if not passphrase:
       passphrase = raw_input('type passphrase and press enter: ')
       passphrase = passphrase.strip()
@@ -60,7 +60,7 @@ def start():
       assert purpose == '1' or purpose == '0'
     except AssertionError:
       purpose = 0 #assume you are going to unscramble messages by default
-   
+
     if purpose == '1':
       message = raw_input('type your message and press enter: ')
       cipher = scramble(message, passphrase)
