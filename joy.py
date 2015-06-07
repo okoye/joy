@@ -1,5 +1,5 @@
 '''
-My Zoe time-machine.
+My Zoe time-capsule.
 
 @description:   Allows you to get/send messages from/to the future today.
                 To successfully unscramble messages. You will need to deduce the passphrase.
